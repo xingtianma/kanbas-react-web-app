@@ -230,6 +230,8 @@ export default function Lab1() {
           <a id="wd-lipsum" href="https://www.lipsum.com">click here</a>
           to get dummy text<br />
           Please
+          <a id="wd-lipsum" href="addnewlink.com">click here</a>
+          to get to github repo
         </form>
       </div>
     </div>
