@@ -17,7 +17,9 @@ export default function AssignmentEditor() {
       </textarea>
       <br />
       <br />
-      <table>
+      
+      <table className ="float-left p-3">
+      <div>
         <tr>
           <td align="right" valign="top">
             <label htmlFor="wd-points">Points</label>
@@ -48,66 +50,73 @@ export default function AssignmentEditor() {
             </select>
           </td>
         </tr>
+        </div>
         <br />
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-submission-type">Submission Type</label>
-          </td>
-          <td>
-            <select id="wd-submission-type">
-              <option value="ONLINE">Online</option>
-            </select>
-          </td>
-        </tr>
         <br />
-        <tr>
-          <td align="right" valign="top">
-            <label></label> <br />
-          </td>
-          <label>Online Entry Options</label> <br />
-          <input type="checkbox" id="wd-text-entry" />
-          <label htmlFor="wd-text-entry">Text Entry</label>
+        <div className="border">
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-submission-type">Submission Type</label>
+            </td>
+            <td>
+              <select id="wd-submission-type">
+                <option value="ONLINE">Online</option>
+              </select>
+            </td>
+          </tr>
           <br />
-          <input type="checkbox" id="wd-website-url" />
-          <label htmlFor="wd-website-url">Website URL</label>
-          <br />
-          <input type="checkbox" id="wd-media-recordings" />
-          <label htmlFor="wd-media-recordings">Media Recordings</label>
-          <br />
-          <input type="checkbox" id="wd-student-annotation" />
-          <label htmlFor="wd-student-annotation">Student Annotation</label>
-          <br />
-          <input type="checkbox" id="wd-file-upload" />
-          <label htmlFor="wd-file-upload">File Uploads</label>
-        </tr>
+          <tr>
+            <td align="right" valign="top">
+              <label></label> <br />
+            </td>
+            <label>Online Entry Options</label> <br />
+            <input type="checkbox" id="wd-text-entry" />
+            <label htmlFor="wd-text-entry">Text Entry</label>
+            <br />
+            <input type="checkbox" id="wd-website-url" />
+            <label htmlFor="wd-website-url">Website URL</label>
+            <br />
+            <input type="checkbox" id="wd-media-recordings" />
+            <label htmlFor="wd-media-recordings">Media Recordings</label>
+            <br />
+            <input type="checkbox" id="wd-student-annotation" />
+            <label htmlFor="wd-student-annotation">Student Annotation</label>
+            <br />
+            <input type="checkbox" id="wd-file-upload" />
+            <label htmlFor="wd-file-upload">File Uploads</label>
+          </tr>
+        </div>
         <br />
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-assign-to">Assign</label>
-          </td>
-          Assign to
+        <div className="border">
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-assign-to">Assign</label>
+            </td>
+            Assign to
+            <br />
+            <input type="text" id="wd-assign-to" value="Everyone" />
+          </tr>
           <br />
-          <input type="text" id="wd-assign-to" value="Everyone" />
-        </tr>
-        <br />
-        <tr>
-          <td align="right" valign="top">
-            <label></label> <br />
-          </td>
-          Due<br />
-          <input type="date" id="wd-due-date" value="2024-05-13" />
+          <tr>
+            <td align="right" valign="top">
+              <label></label> <br />
+            </td>
+            Due
+            <br />
+            <input type="date" id="wd-due-date" value="2024-05-13" />
+            <br />
+          </tr>
           <br />
-        </tr>
-        <br />
-        <tr>
-          <td align="right" valign="top">
-            <label></label> <br />
-          </td>
-          <label>Available from</label><label>Until</label> <br />
-          <input type="date" id="wd-available-from" value="2024-05-06" />
-          <input type="date" id="wd-available-until" value="2024-05-20" />
-        </tr>
-        
+          <tr>
+            <td align="right" valign="top">
+              <label></label> <br />
+            </td>
+            <label>Available from</label>
+            <label>Until</label> <br />
+            <input type="date" id="wd-available-from" value="2024-05-06" />
+            <input type="date" id="wd-available-until" value="2024-05-20" />
+          </tr>
+        </div>
       </table>
     </div>
   );
