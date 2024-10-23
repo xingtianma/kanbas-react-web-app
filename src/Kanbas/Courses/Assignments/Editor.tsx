@@ -1,55 +1,62 @@
+import assignments from "../../Database/assignments.json";
+import React from "react";
+import { useParams } from "react-router-dom";
+
 export default function AssignmentEditor() {
+  const { cid } = useParams();
+  console.log("Assignment ID from URL:", cid);
+  const assignment = assignments.find((assignment) => assignment.course === cid);
+
   return (
     <div id="wd-assignments-editor">
       <label htmlFor="wd-name">Assignment Name</label>
+      <input id="wd-name" value={assignment && assignment._id} />
       <br />
-      <br />
-      <input id="wd-name" value="A1 - ENV + HTML" />
       <br />
       <br />
       <textarea rows={9} cols={33} id="wd-description">
-        The assignment is available online Submit a link to the landing page of
-        your Web application running on Netlify. The landing page should include
-        the following: Your full name and section Links to each of the lab
-        assignments Link to the Kanbas application Links to all relevant source
-        code repositories The Kanbas application should include a link to
-        navigate back to the landing page.
+        {assignment && assignment.description}
       </textarea>
       <br />
       <br />
-      
-      <table className ="float-left p-3">
-      <div>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-points">Points</label>
-          </td>
-          <td>
-            <input id="wd-points" value={100} />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-group">Assignment Group</label>
-          </td>
-          <td>
-            <select id="wd-group">
-              <option value="Assignments">ASSIGNMENTS</option>
-            </select>
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-display-group-as">Display Grade as</label>
-          </td>
-          <td>
-            <select id="wd-display-group-as">
-              <option value="PERCENTAGE">Percentage</option>
-            </select>
-          </td>
-        </tr>
+
+      <table className="float-left p-3">
+        <div>
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-points">
+                Points
+              </label>
+            </td>
+            <td>
+              <input
+                id="wd-points"
+                value={assignment && assignment.points}
+              />
+            </td>
+          </tr>
+          <br />
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-group">Assignment Group</label>
+            </td>
+            <td>
+              <select id="wd-group">
+                <option value="Assignments">ASSIGNMENTS</option>
+              </select>
+            </td>
+          </tr>
+          <br />
+          <tr>
+            <td align="right" valign="top">
+              <label htmlFor="wd-display-group-as">Display Grade as</label>
+            </td>
+            <td>
+              <select id="wd-display-group-as">
+                <option value="PERCENTAGE">Percentage</option>
+              </select>
+            </td>
+          </tr>
         </div>
         <br />
         <br />
@@ -103,7 +110,11 @@ export default function AssignmentEditor() {
             </td>
             Due
             <br />
-            <input type="date" id="wd-due-date" value="2024-05-13" />
+            <input
+              type="date"
+              id="wd-due-date"
+              value={assignment && assignment.duedate}
+            />
             <br />
           </tr>
           <br />
@@ -113,7 +124,11 @@ export default function AssignmentEditor() {
             </td>
             <label>Available from</label>
             <label>Until</label> <br />
-            <input type="date" id="wd-available-from" value="2024-05-06" />
+            <input
+              type="date"
+              id="wd-available-from"
+              value={assignment && assignment.availabledate}
+            />
             <input type="date" id="wd-available-until" value="2024-05-20" />
           </tr>
         </div>

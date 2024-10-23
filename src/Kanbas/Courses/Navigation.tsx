@@ -1,7 +1,39 @@
 import { Link } from "react-router-dom";
+import { useLocation, useParams } from "react-router";
+
 export default function CoursesNavigation() {
+  const links = [
+    "Home",
+    "Modules",
+    "Piazza",
+    "Zoom",
+    "Assignments",
+    "Quizzes",
+    "Grades",
+    "People",
+  ];
+  const { cid } = useParams();
+  const location = useLocation();
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+      {links.map((link) => (
+        <Link
+          key={link}
+          id={`wd-course-${link.toLowerCase()}-link`}
+          to={`/Kanbas/Courses/${cid}/${link}`}
+          className={`list-group-item text-danger border border-0 ${
+            location.pathname.includes(link) ? "active" : ""
+          }`}
+        >
+          {link}
+        </Link>
+      ))}
+    </div>
+  );
+}
+/*
+
+<div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
       <Link id="wd-course-home-link"    to="/Kanbas/Courses/1234/Home" 
       className="list-group-item active border border-0">Home</Link>
       <Link id="wd-course-modules-link" to="/Kanbas/Courses/1234/Modules" 
@@ -22,4 +54,5 @@ export default function CoursesNavigation() {
       <Link id="wd-course-people-link"  to="/Kanbas/People"
       className="list-group-item text-danger border border-0">People</Link>
     </div>
-);}
+
+*/
