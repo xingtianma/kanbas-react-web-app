@@ -53,7 +53,6 @@ export default function AssignmentEditor({
         onChange={(e) => setName(e.target.value)}
       >
         {assignment && assignment.description}
-        onChange
       </textarea>
       <br />
       <br />
