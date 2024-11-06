@@ -8,7 +8,7 @@ import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa6";
 import PeopleTable from "./People/table";
 
-export default function Courses({ courses }: { courses: any[]; }) {
+export default function Courses({ courses }: { courses: any[] }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
@@ -27,9 +27,32 @@ export default function Courses({ courses }: { courses: any[]; }) {
           <Routes>
             <Route path="Home" element={<Home />} />
             <Route path="Modules" element={<Modules />} />
-            <Route path="Assignments" element={<Assignments />} />
-            <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-            <Route path="People" element={<PeopleTable />} /> 
+            <Route
+              path="Assignments"
+              element={
+                <Assignments
+                  assignmentName={""}
+                  setAssignmentName={function (title: string): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                  addAssignment={function (): void {
+                    throw new Error("Function not implemented.");
+                  }}
+                />
+              }
+            />
+            <Route
+              path="Assignments/:aid"
+              element={
+                <AssignmentEditor
+                  dialogTitle="Edit Assignment"
+                  assignmentName=""
+                  setAssignmentName={() => {}}
+                  addAssignment={() => {}}
+                />
+              }
+            />
+            <Route path="People" element={<PeopleTable />} />
           </Routes>
         </div>
       </div>

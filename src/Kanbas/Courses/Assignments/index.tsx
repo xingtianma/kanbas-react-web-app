@@ -4,8 +4,18 @@ import { PiNotebookFill } from "react-icons/pi";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { assignments } from "../../Database";
 import { courses } from "../../Database";
-export default function Assignments() {
-  const { courseId } = useParams();
+import AssignmentEditor from "./Editor";
+
+export default function Assignments({
+  assignmentName,
+  setAssignmentName,
+  addAssignment,
+}: {
+  assignmentName: string;
+  setAssignmentName: (title: string) => void;
+  addAssignment: () => void;
+}) {
+  const { courseId } = useParams<{ courseId: string }>();
   return (
     <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
       <div className="float-right">
@@ -14,12 +24,13 @@ export default function Assignments() {
           className="block border border-gray-300"
           placeholder="🔍 Search..."
         />
+
         <Link
           to={`/Kanbas/Courses/Course/Assignments/Editor`}
           className="btn btn-lg btn-danger me-1 float-end"
         >
           + Assignment
-        </Link>z
+        </Link>
         <button className="btn btn-lg btn-secondary me-1 float-end">
           + Group
         </button>

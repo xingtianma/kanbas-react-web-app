@@ -1,27 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { modules } from "../../Database";
+import { assignments } from "../../Database";
 const initialState = {
-  modules: modules,
+  assignments: assignments,
 };
 const modulesSlice = createSlice({
-  name: "modules",
+  name: "assignments",
   initialState,
   reducers: {
     addAssignment: (state, { payload: assignment }) => {
       const newModule: any = {
         _id: new Date().getTime().toString(),
+        title : assignment.title,
+        course: assignment.course,
         description: assignment.description,
         points: assignment.points,
         name: assignment.name,
-        course: assignment.course,
       };
-      state.modules = [...state.modules, newModule] as any;
+      state.assignments = [...state.assignments, newModule] as any;
     },
-    deleteAssignment: (state, { payload: moduleId }) => {
-      state.modules = state.modules.filter((m: any) => m._id !== moduleId);
+    deleteAssignment: (state, { payload: assignmentId }) => {
+      state.assignments = state.assignments.filter((m: any) => m._id !== assignmentId);
     },
     updateAssignment: (state, { payload: module }) => {
-      state.modules = state.modules.map((m: any) =>
+      state.assignments = state.assignments.map((m: any) =>
         m._id === module._id ? module : m
       ) as any;
     },
