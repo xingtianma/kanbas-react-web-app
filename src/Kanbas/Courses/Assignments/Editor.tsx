@@ -34,6 +34,7 @@ export default function AssignmentEditor({
     assignment ? assignment.availabledate : ""
   );
   const [course, setCourse] = useState(assignment ? assignment.course : "");
+  const { assignmentId, courseId } = useParams();
 
   return (
     <div id="wd-assignments-editor">

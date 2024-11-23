@@ -5,6 +5,9 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { assignments } from "../../Database";
 import { courses } from "../../Database";
 import AssignmentEditor from "./Editor";
+import * as assignmentClient from "../client"
+import { useEffect } from "react";
+import { fetchAllAssignments, fetchAssignmentsForCourse } from "./client";
 
 export default function Assignments({
   assignmentName,
@@ -16,6 +19,11 @@ export default function Assignments({
   addAssignment: () => void;
 }) {
   const { courseId } = useParams<{ courseId: string }>();
+  useEffect(() => {
+    if (courseId) {
+      fetchAssignmentsForCourse(courseId);
+    }
+  }, []);
   return (
     <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
       <div className="float-right">
